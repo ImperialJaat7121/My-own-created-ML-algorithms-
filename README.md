@@ -21,10 +21,21 @@ A personal repository to implement core machine learning algorithms and utilitie
 ## Installation
 Clone the repository and use your preferred environment (recommended: conda/venv).
 
+Windows (venv)
+```powershell
+git clone <repo-url>
+cd <Your path>
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Windows (conda)
 ```bash
 git clone <repo-url>
-cd <Your directory>
-# create or activate environment, then:
+cd <Your path>
+conda create -n ml python=3.10
+conda activate ml
 pip install -r requirements.txt
 ```
 
@@ -32,9 +43,9 @@ pip install -r requirements.txt
 
 ```python
 import numpy as np
-from My-own-created-ML-algorithms-.regression.linear_regression.simple_linear_regression.LR import SimpleLinearRegression
-from My-own-created-ML-algorithms-.preprocessing import train_test_split
-from My-own-created-ML-algorithms-.performance.regression import (
+from Own_ml_algorithms.regression.linear_regression.simple_linear_regression.LR import SimpleLinearRegression
+from Own_ml_algorithms.preprocessing import train_test_split
+from Own_ml_algorithms.performance.regression import (
     calculate_mae, calculate_mse, calculate_rmse, calculate_r_squared
 )
 
@@ -55,7 +66,33 @@ print("Coef:", model.coef_, "Intercept:", model.intercept_)
 print("RMSE:", calculate_rmse(y_test, preds), "R2:", calculate_r_squared(y_test, preds))
 ```
 
+## Test scripts (sklearn comparison)
+The test scripts are provided to validate implementations and compare against scikit‑learn.
+
+### test_LR.py (module-level comparison)
+- Location: `Own_ml_algorithms\regression\linear_regression\simple_linear_regression\test_LR.py`
+- Purpose: compares three implementations on the included dataset `weight_height.csv`:
+  - Own gradient‑descent SimpleLinearRegression (LR.py)
+  - Own OLS implementation (LR_OLS.py)
+  - scikit‑learn LinearRegression
+- Behavior: loads `weight_height.csv`, scales features, trains all three models, prints MSE and R² for side‑by‑side comparison.
+- Run options:
+  - Option A — run from that folder (recommended for direct imports):
+    ```powershell
+    cd Own_ml_algorithms\regression\linear_regression\simple_linear_regression
+    python test_LR.py
+    ```
+  - Option B — run with pytest (if pytest installed):
+    ```bash
+    pytest Own_ml_algorithms/regression/linear_regression/simple_linear_regression/test_LR.py
+    ```
+
+Notes:
+- Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
+- `test_LR.py` expects `weight_height.csv` to be in the same directory as the test file (it is included in the repo).
+
 ## Notes & Recommendations
+
 - Use feature scaling when training gradient-descent models to avoid overflow/exploding gradients.
 - For multivariate extensions, ensure input X has shape (n_samples, n_features).
 - This repo is educational — production use should prefer well-tested libraries.
