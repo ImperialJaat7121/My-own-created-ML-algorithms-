@@ -11,6 +11,9 @@ A personal repository to implement core machine learning algorithms and utilitie
 - Regression
   - Simple Linear Regression (OLS) — LR_OLS.py
   - Simple Linear Regression (Gradient Descent) — LR.py (from-scratch API compatible with scikit-learn)
+  - Multiple Linear Regression (Gradient Descent) — Multiple_LR.py
+  - Polynomial feature transformer — Polynomial_Regression.py (used with MultipleLinearRegression for polynomial regression)
+
 
 ### Utilities
 - Preprocessing
@@ -39,57 +42,49 @@ conda activate ml
 pip install -r requirements.txt
 ```
 
-## Quick Usage Example
-
-```python
-import numpy as np
-from Own_ml_algorithms.regression.linear_regression.simple_linear_regression.LR import SimpleLinearRegression
-from Own_ml_algorithms.preprocessing import train_test_split
-from Own_ml_algorithms.performance.regression import (
-    calculate_mae, calculate_mse, calculate_rmse, calculate_r_squared
-)
-
-# create synthetic data
-X = np.linspace(1, 20, 100)
-y = 3 * X + 5 + np.random.randn(100) * 2.0
-
-# split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# train
-model = SimpleLinearRegression(fit_intercept=True)
-model.fit(X_train, y_train, learning_rate=0.01, n_iterations=1000)
-
-# predict & evaluate
-preds = model.predict(X_test)
-print("Coef:", model.coef_, "Intercept:", model.intercept_)
-print("RMSE:", calculate_rmse(y_test, preds), "R2:", calculate_r_squared(y_test, preds))
-```
-
 ## Test scripts (sklearn comparison)
 The test scripts are provided to validate implementations and compare against scikit‑learn.
 
-### test_LR.py (module-level comparison)
-- Location: `Own_ml_algorithms\regression\linear_regression\simple_linear_regression\test_LR.py`
-- Purpose: compares three implementations on the included dataset `weight_height.csv`:
-  - Own gradient‑descent SimpleLinearRegression (LR.py)
-  - Own OLS implementation (LR_OLS.py)
-  - scikit‑learn LinearRegression
-- Behavior: loads `weight_height.csv`, scales features, trains all three models, prints MSE and R² for side‑by‑side comparison.
-- Run options:
-  - Option A — run from that folder (recommended for direct imports):
-    ```powershell
-    cd Own_ml_algorithms\regression\linear_regression\simple_linear_regression
-    python test_LR.py
-    ```
-  - Option B — run with pytest (if pytest installed):
-    ```bash
-    pytest Own_ml_algorithms/regression/linear_regression/simple_linear_regression/test_LR.py
-    ```
+1. test.py (repo root)
+   - Basic end‑to‑end check for SimpleLinearRegression using synthetic data.
+   - Run from repo root:
+     - venv: `venv\Scripts\activate` then `python test.py`
+     - conda: `conda activate ml` then `python test.py`
+
+2. test_LR.py (module-level)
+   - Location: `Own_ml_algorithms/regression/linear_regression/simple_linear_regression/test_LR.py`
+   - Compares LR.py (gradient descent), LR_OLS.py (closed-form OLS) and scikit‑learn LinearRegression on the included `weight_height.csv`.
+   - Run:
+     ```powershell
+     cd Own_ml_algorithms\regression\linear_regression\simple_linear_regression
+     python test_LR.py
+     ```
+
+3. test_Polynomial_and_multiple.py (module-level)
+   - Location: `Own_ml_algorithms/regression/linear_regression/polynomial_regression/test_Polynomial_and_multiple.py`
+   - Two tests:
+     - TEST A: Multiple Linear Regression (2 features) — trains MultipleLinearRegression and compares with scikit‑learn.
+     - TEST B: Polynomial Regression — uses Polynomial_Regression to generate polynomial features, then fits MultipleLinearRegression and compares with scikit‑learn LinearRegression.
+   - Run (from repo root for package imports to resolve):
+     ```powershell
+     venv\Scripts\activate
+     python -m Own_ml_algorithms.regression.linear_regression.polynomial_regression.test_Polynomial_and_multiple
+     ```
+   - Or run directly from the module folder (the test script adds repo root to sys.path automatically), e.g.:
+     ```powershell
+     cd Own_ml_algorithms\regression\linear_regression\polynomial_regression
+     python test_Polynomial_and_multiple.py
+     ```
 
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
 - `test_LR.py` expects `weight_height.csv` to be in the same directory as the test file (it is included in the repo).
+
+## Module notes / API highlights
+- MultipleLinearRegression.fit accepts common gradient descent parameters:
+  - learning_rate (float), n_iterations (int), tol (float), verbose (bool).
+- Polynomial_Regression.PolynomialRegression provides fit_transform(X) to generate polynomial features of specified degree; combine with MultipleLinearRegression for polynomial regression.
+- All models store learned parameters in the scikit‑learn style attributes (coef_, intercept_).
 
 ## Notes & Recommendations
 
@@ -98,11 +93,10 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-My goal is to continue adding all Machine Learning algorithms. The next major steps are:
-- Multiple Linear Regression: Vectorize the Gradient Descent model to accept (n_samples, n_features) input.
-- Logistic Regression: Adapt the Gradient Descent engine for classification using the Sigmoid function and Log Loss (Binary Cross-Entropy).
-- K-Nearest Neighbors (k-NN): Implement a non-parametric "lazy learning" algorithm.
-- Decision Tree: Build a rule-based model using recursive partitioning and Gini/Entropy impurity.
+- Expand Multiple Linear Regression and vectorized GD
+- Logistic Regression (binary classification)
+- k‑NN, Naive Bayes, Decision Trees, K‑Means
+- Expand unit tests and documentation
 - ...and many more!
 
 ## Contributing
