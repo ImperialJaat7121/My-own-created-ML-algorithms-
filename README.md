@@ -13,8 +13,12 @@ A personal repository to implement core machine learning algorithms and utilitie
   - Simple Linear Regression (Gradient Descent) — LR.py (from-scratch API compatible with scikit-learn)
   - Multiple Linear Regression (Gradient Descent) — Multiple_LR.py
   - Polynomial feature transformer — Polynomial_Regression.py (used with MultipleLinearRegression for polynomial regression)
- - Classification / Regression
-   - Support Vector Machine (SVM) — svm/ (from-scratch classifier and regressor; see svm folder for usage/tests)
+  - Support Vector Machine (SVM) — An algorithm that predicts a continuous numerical value, answering "how much" (e.g., predicting the exact price of a house) / (from-scratch regressor; see svm folder for usage/tests)
+
+- Classification
+  - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No") / (from-scratch classifier; see logistic_regression folder for usage/tests).
+  - Support Vector Machine (SVM) — An algorithm that categorizes data into distinct groups, answering "which one" (e.g., predicting if a fruit is an apple or an orange) / (from-scratch classifier; see svm folder for usage/tests)
+  - Naive Bayes — Naive Bayes (Gaussian) is a probabilistic classifier based on Bayes' Theorem that assumes all features are unrelated to each other (independent) when predicting a category / see naive_bayes folder for usage/tests.
 
 
 ### Utilities
@@ -78,15 +82,28 @@ The test scripts are provided to validate implementations and compare against sc
      python test_Polynomial_and_multiple.py
      ```
 
-4. SVM tests (module-level)
-   - Location: `Own_ml_algorithms/svm/test_svm.py` (and related helper tests if present)
-   - Purpose: validates the from-scratch SVM implementation and compares against scikit‑learn SVC where applicable.
+4. test_logistic.py (module-level)
+   - Location: `Own_ml_algorithms/classification/Logistic_Regression/test_logistic.py`
+   - Purpose: validates the from-scratch `LogisticRegression` implementation and compares results with scikit-learn's `LogisticRegression` when available.
    - Run (from repo root):
      ```powershell
      venv\Scripts\activate
-     python -m Own_ml_algorithms.svm.test_svm
+     python -m Own_ml_algorithms.classification.Logistic_Regression.test_logistic
      ```
-   - If additional demo tests exist, run them similarly with `python -m Own_ml_algorithms.svm.<script>`.
+
+5. SVM comparison / demo (notebook)
+   - Location: `Own_ml_algorithms/svm/comparision.ipynb` and `Own_ml_algorithms/svm/demo.ipynb`
+   - Purpose: benchmark the project's linear SVM classifier/regressor (`svm_classifier.py`, `svm_regressor.py`) against scikit‑learn's `SVC`/`SVR` on standard datasets (Breast Cancer for classification, California Housing for regression); includes visual comparisons (confusion matrices, accuracy, prediction plots) and a demonstration of margins and epsilon-tube for SVR.
+   - Run: open the notebook in Jupyter / VS Code or run headless with:
+     ```powershell
+     jupyter nbconvert --to notebook --execute Own_ml_algorithms/svm/comparision.ipynb
+     jupyter nbconvert --to notebook --execute Own_ml_algorithms/svm/demo.ipynb
+     ```
+
+6. Naive Bayes demo/notebook (module-level)
+  - Location: `Own_ml_algorithms/classification/Naive_Bayes/test.ipynb`
+  - Purpose: interactive notebook demonstrating the project's Gaussian Naive Bayes implementation (`naive_bayes.py`), decision-boundary visualizations on synthetic data (Moons), and comparison with scikit‑learn's `GaussianNB`.
+  - Run: open the notebook in Jupyter / VS Code or run it with `jupyter nbconvert --to notebook --execute classification/Naive_Bayes/test.ipynb` for headless execution.
 
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
@@ -96,13 +113,17 @@ Notes:
 - SVM comparison: [svm/comparision.ipynb](svm/comparision.ipynb)
 - SVM demo/visualization: [svm/demo.ipynb](svm/demo.ipynb)
   - Open these notebooks to see side-by-side results and visualizations (e.g., decision boundaries) for the custom SVM vs scikit‑learn.
+ - Naive Bayes demo/visualization: [classification/Naive_Bayes/test.ipynb](classification/Naive_Bayes/test.ipynb)
+   - Visualizes Gaussian Naive Bayes behavior on the Moons dataset, decision boundaries, and comparison with scikit‑learn.
 
 ## Module notes / API highlights
 - MultipleLinearRegression.fit accepts common gradient descent parameters:
   - learning_rate (float), n_iterations (int), tol (float), verbose (bool).
 - Polynomial_Regression.PolynomialRegression provides fit_transform(X) to generate polynomial features of specified degree; combine with MultipleLinearRegression for polynomial regression.
 - All models store learned parameters in the scikit‑learn style attributes (coef_, intercept_).
+- Logistic Regression (from scratch): provides `fit` (supports `learning_rate`, `n_iterations`, `tol`, `verbose`), `predict_proba`, and `predict` (default threshold 0.5); learned parameters are available as `coef_` and `intercept_`. Implementation uses vectorized gradient descent for binary classification — recommended to scale features before training. See `classification/Logistic_Regression/test_logistic.py` for usage and scikit‑learn comparisons.
 - SVM (from scratch) mirrors scikit‑learn’s interface where possible (fit, predict); includes both classifier and regressor variants. See svm/test_svm.py for usage and comparisons.
+- Naive Bayes implementations included (Gaussian). See `naive_bayes/` for API examples and comparison tests with scikit‑learn.
 
 ## Notes & Recommendations
 
@@ -113,7 +134,6 @@ Notes:
 ## Project Roadmap
 - k‑NN classifier/regressor
 - Tree-based models: Decision Tree, Random Forest, Gradient Boosting (AdaBoost, XGBoost)
-- Naive Bayes
 - k‑Means and other clustering
 - SVM enhancements and more demos
 - Broader unit tests, benchmarks, and documentation
