@@ -14,11 +14,13 @@ A personal repository to implement core machine learning algorithms and utilitie
   - Multiple Linear Regression (Gradient Descent) — Multiple_LR.py
   - Polynomial feature transformer — Polynomial_Regression.py (used with MultipleLinearRegression for polynomial regression)
   - Support Vector Machine (SVM) — An algorithm that predicts a continuous numerical value, answering "how much" (e.g., predicting the exact price of a house) / (from-scratch regressor; see svm folder for usage/tests)
+  - K-Nearest Neighbors (KNN) Regressor — A non‑parametric method that predicts continuous values by averaging the targets of the k closest training samples / (from‑scratch regressor; see knn folder for usage/tests)
 
 - Classification
   - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No") / (from-scratch classifier; see logistic_regression folder for usage/tests).
   - Support Vector Machine (SVM) — An algorithm that categorizes data into distinct groups, answering "which one" (e.g., predicting if a fruit is an apple or an orange) / (from-scratch classifier; see svm folder for usage/tests)
   - Naive Bayes — Naive Bayes (Gaussian) is a probabilistic classifier based on Bayes' Theorem that assumes all features are unrelated to each other (independent) when predicting a category / see naive_bayes folder for usage/tests.
+  - K-Nearest Neighbors (KNN) — instance‑based classifier that assigns a class by majority vote among the k nearest training points / (from‑scratch classifier; see knn folder for usage/tests)
 
 
 ### Utilities
@@ -105,6 +107,36 @@ The test scripts are provided to validate implementations and compare against sc
   - Purpose: interactive notebook demonstrating the project's Gaussian Naive Bayes implementation (`naive_bayes.py`), decision-boundary visualizations on synthetic data (Moons), and comparison with scikit‑learn's `GaussianNB`.
   - Run: open the notebook in Jupyter / VS Code or run it with `jupyter nbconvert --to notebook --execute classification/Naive_Bayes/test.ipynb` for headless execution.
 
+7. KNN classifier test (module-level)
+   - Location: `Own_ml_algorithms/knn/test_classifier.py`
+   - Purpose: evaluates `MyKNNClassifier` on the Iris dataset and compares with scikit‑learn's `KNeighborsClassifier`.
+   - Run:
+     ```powershell
+     # From repo root (module run)
+     venv\Scripts\activate
+     python -m Own_ml_algorithms.knn.test_classifier
+
+     # Or run directly from folder
+     cd Own_ml_algorithms\knn
+     python test_classifier.py
+     ```
+
+8. KNN regressor test (module-level)
+   - Location: `Own_ml_algorithms/knn/test_regressor.py`
+   - Purpose: evaluates `MyKNNRegressor` on the Diabetes dataset and compares with scikit‑learn's `KNeighborsRegressor`.
+   - Run:
+     ```powershell
+     # From repo root (module run)
+     venv\Scripts\activate
+     python -m Own_ml_algorithms.knn.test_regressor
+
+     # Or run directly from folder
+     cd Own_ml_algorithms\knn
+     python test_regressor.py
+     ```
+
+
+
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
 - `test_LR.py` expects `weight_height.csv` to be in the same directory as the test file (it is included in the repo).
@@ -113,8 +145,12 @@ Notes:
 - SVM comparison: [svm/comparision.ipynb](svm/comparision.ipynb)
 - SVM demo/visualization: [svm/demo.ipynb](svm/demo.ipynb)
   - Open these notebooks to see side-by-side results and visualizations (e.g., decision boundaries) for the custom SVM vs scikit‑learn.
- - Naive Bayes demo/visualization: [classification/Naive_Bayes/test.ipynb](classification/Naive_Bayes/test.ipynb)
-   - Visualizes Gaussian Naive Bayes behavior on the Moons dataset, decision boundaries, and comparison with scikit‑learn.
+- Naive Bayes demo/visualization: [classification/Naive_Bayes/test.ipynb](classification/Naive_Bayes/test.ipynb)
+  - Visualizes Gaussian Naive Bayes behavior on the Moons dataset, decision boundaries, and comparison with scikit‑learn.
+- KNN classifier demo: [knn/demo_knn_classifier.ipynb](knn/demo_knn_classifier.ipynb)
+  - Visualizes decision boundaries on Iris using `MyKNNClassifier` with different k values and neighbor connections.
+- KNN regressor demo: [knn/demo_knn_regressor.ipynb](knn/demo_knn_regressor.ipynb)
+  - Fits `MyKNNRegressor` to a noisy sine wave and compares different k values for under/overfitting behavior.
 
 ## Module notes / API highlights
 - MultipleLinearRegression.fit accepts common gradient descent parameters:
@@ -124,6 +160,7 @@ Notes:
 - Logistic Regression (from scratch): provides `fit` (supports `learning_rate`, `n_iterations`, `tol`, `verbose`), `predict_proba`, and `predict` (default threshold 0.5); learned parameters are available as `coef_` and `intercept_`. Implementation uses vectorized gradient descent for binary classification — recommended to scale features before training. See `classification/Logistic_Regression/test_logistic.py` for usage and scikit‑learn comparisons.
 - SVM (from scratch) mirrors scikit‑learn’s interface where possible (fit, predict); includes both classifier and regressor variants. See svm/test_svm.py for usage and comparisons.
 - Naive Bayes implementations included (Gaussian). See `naive_bayes/` for API examples and comparison tests with scikit‑learn.
+- KNN (Classifier & Regressor): lazy learners — `fit(X, y)` stores training data; `predict(X)` finds k nearest neighbors via Euclidean distance and aggregates by majority vote (classifier) or mean (regressor); `score()` returns accuracy (classifier) or R² (regressor). Primary hyperparameter: `k` (int). Consider feature scaling for meaningful distance measures.
 
 ## Notes & Recommendations
 
@@ -132,7 +169,6 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- k‑NN classifier/regressor
 - Tree-based models: Decision Tree, Random Forest, Gradient Boosting (AdaBoost, XGBoost)
 - k‑Means and other clustering
 - SVM enhancements and more demos
