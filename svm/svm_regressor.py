@@ -49,24 +49,3 @@ class MySVMRegressor:
 
     def predict(self, X):
         return np.dot(X, self.w) + self.b
-
-
-# TESTING THE SVM REGRESSOR
-
-if __name__ == "__main__":
-    from sklearn import datasets
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.metrics import mean_squared_error
-
-    print("--- SVM Regression Test ---")
-    X_reg, y_reg = datasets.make_regression(n_samples=100, n_features=1, noise=20, random_state=42)
-    
-    # Scaling is crucial for SVM!
-    scaler = StandardScaler()
-    X_reg = scaler.fit_transform(X_reg)
-    
-    reg = MySVMRegressor(learning_rate=0.01, n_iterations=1000, epsilon=5)
-    reg.fit(X_reg, y_reg)
-    
-    mse = mean_squared_error(y_reg, reg.predict(X_reg))
-    print(f"MSE: {mse:.4f}")

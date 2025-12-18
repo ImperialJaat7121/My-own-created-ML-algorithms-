@@ -43,23 +43,3 @@ class MySVMClassifier:
         approx = np.dot(X, self.w) - self.b
         # Return -1 or 1 based on sign
         return np.sign(approx)
-    
-# TESTING THE SVM CLASSIFIER
-
-if __name__ == "__main__":
-    from sklearn import datasets
-    from sklearn.model_selection import train_test_split
-    from sklearn.metrics import accuracy_score
-
-    print("--- SVM Classification Test ---")
-    X, y = datasets.make_blobs(n_samples=200, n_features=2, centers=2, cluster_std=1.05, random_state=40)
-    y = np.where(y == 0, -1, 1)
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
-
-    clf = MySVMClassifier(learning_rate=0.001, lambda_param=0.01, n_iterations=1000)
-    clf.fit(X_train, y_train)
-    predictions = clf.predict(X_test)
-    
-    print(f"Accuracy: {accuracy_score(y_test, predictions):.4f}")
-    print(f"Weights: {clf.w}")
