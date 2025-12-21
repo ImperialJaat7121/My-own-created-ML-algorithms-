@@ -96,11 +96,7 @@ The test scripts are provided to validate implementations and compare against sc
 5. SVM comparison / demo (notebook)
    - Location: `Own_ml_algorithms/svm/comparision.ipynb` and `Own_ml_algorithms/svm/demo.ipynb`
    - Purpose: benchmark the project's linear SVM classifier/regressor (`svm_classifier.py`, `svm_regressor.py`) against scikit‑learn's `SVC`/`SVR` on standard datasets (Breast Cancer for classification, California Housing for regression); includes visual comparisons (confusion matrices, accuracy, prediction plots) and a demonstration of margins and epsilon-tube for SVR.
-   - Run: open the notebook in Jupyter / VS Code or run headless with:
-     ```powershell
-     jupyter nbconvert --to notebook --execute Own_ml_algorithms/svm/comparision.ipynb
-     jupyter nbconvert --to notebook --execute Own_ml_algorithms/svm/demo.ipynb
-     ```
+   - Run: open the notebook in Jupyter and execute all the cells.
 
 6. Naive Bayes demo/notebook (module-level)
   - Location: `Own_ml_algorithms/classification/Naive_Bayes/test.ipynb`
