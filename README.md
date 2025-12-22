@@ -101,7 +101,7 @@ The test scripts are provided to validate implementations and compare against sc
 6. Naive Bayes demo/notebook (module-level)
   - Location: `Own_ml_algorithms/classification/Naive_Bayes/test.ipynb`
   - Purpose: interactive notebook demonstrating the project's Gaussian Naive Bayes implementation (`naive_bayes.py`), decision-boundary visualizations on synthetic data (Moons), and comparison with scikit‑learn's `GaussianNB`.
-  - Run: open the notebook in Jupyter / VS Code or run it with `jupyter nbconvert --to notebook --execute classification/Naive_Bayes/test.ipynb` for headless execution.
+  - Run: open the notebook in Jupyter / VS Code
 
 7. KNN classifier test (module-level)
    - Location: `Own_ml_algorithms/knn/test_classifier.py`
@@ -130,8 +130,6 @@ The test scripts are provided to validate implementations and compare against sc
      cd Own_ml_algorithms\knn
      python test_regressor.py
      ```
-
-
 
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
