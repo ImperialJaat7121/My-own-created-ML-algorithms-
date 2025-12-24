@@ -163,9 +163,8 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- Tree-based models: Decision Tree, Random Forest, Gradient Boosting (AdaBoost, XGBoost)
+- Tree-based models:Gradient Boosting (AdaBoost, XGBoost)
 - k‑Means and other clustering
-- SVM enhancements and more demos
 - Broader unit tests, benchmarks, and documentation
 
 ## Contributing
