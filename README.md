@@ -163,7 +163,7 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- Tree-based models:Gradient Boosting (AdaBoost, XGBoost)
+- Gradient Boosting (AdaBoost, XGBoost)
 - k‑Means and other clustering
 - Broader unit tests, benchmarks, and documentation
 
