@@ -45,7 +45,7 @@ Windows (conda)
 ```bash
 git clone <repo-url>
 cd <Your path>
-conda create -n ml python=3.10
+conda create -n ml python=3.13
 conda activate ml
 pip install -r requirements.txt
 ```
