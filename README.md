@@ -45,7 +45,7 @@ Windows (conda)
 ```bash
 git clone <repo-url>
 cd <Your path>
-conda create -n ml python=3.10
+conda create -n ml python=3.13
 conda activate ml
 pip install -r requirements.txt
 ```
@@ -163,9 +163,8 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- Tree-based models: Decision Tree, Random Forest, Gradient Boosting (AdaBoost, XGBoost)
+- Gradient Boosting (AdaBoost, XGBoost)
 - k‑Means and other clustering
-- SVM enhancements and more demos
 - Broader unit tests, benchmarks, and documentation
 
 ## Contributing
