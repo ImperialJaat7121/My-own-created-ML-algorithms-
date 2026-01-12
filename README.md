@@ -60,6 +60,7 @@ pip install -r requirements.txt
 ## Test scripts (sklearn comparison)
 The test scripts are provided to validate implementations and compare against scikit‑learn.
 
+
 1. test.py (repo root)
    - Basic end‑to‑end check for SimpleLinearRegression using synthetic data.
    - Run from repo root:
