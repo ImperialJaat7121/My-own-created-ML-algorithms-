@@ -146,6 +146,22 @@ The test scripts are provided to validate implementations and compare against sc
      python test_regressor.py
      ```
 
+9. Trees (Decision Trees & Random Forests)
+   - Decision Tree Classifier
+     - Location: `Own_ml_algorithms/trees/decisiontree/decision_tree_classifier.py`
+     - Implementation: class `MyDecisionTreeClassifier(min_samples_split=2, max_depth=100, n_features=None)` — methods: `fit(X, y)`, `predict(X)`. Uses information gain (entropy) for splits and returns class labels.
+   - Decision Tree Regressor
+     - Location: `Own_ml_algorithms/trees/decisiontree/decision_tree_regressor.py`
+     - Implementation: class `MyDecisionTreeRegressor(min_samples_split=2, max_depth=100, n_features=None)` — methods: `fit(X, y)`, `predict(X)`, `score(X_test, y_test)` (returns R²). Uses variance reduction for splits.
+   - Random Forest Classifier
+     - Location: `Own_ml_algorithms/trees/randomforest/random_forest_classifier.py`
+     - Implementation: class `MyRandomForestClassifier(n_estimators=100, min_samples_split=2, max_depth=100, max_features=None, bootstrap=True, random_state=None)` — methods: `fit(X, y)`, `predict(X)`, `score(X_test, y_test)`. Uses bagging + `MyDecisionTreeClassifier` as base learner.
+   - Random Forest Regressor
+     - Location: `Own_ml_algorithms/trees/randomforest/random_forest_regressor.py`
+     - Implementation: class `MyRandomForestRegressor(n_estimators=100, min_samples_split=2, max_depth=100, max_features=None, bootstrap=True, random_state=None)` — methods: `fit(X, y)`, `predict(X)`, `score(X_test, y_test)` (R²). Uses bagging + `MyDecisionTreeRegressor` as base learner.
+   - Demo / Tests:
+     - Random Forest demo: `trees/randomforest/demo_random_forest.ipynb` (classification and regression examples).
+
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
 - `test_LR.py` expects `weight_height.csv` to be in the same directory as the test file (it is included in the repo).
