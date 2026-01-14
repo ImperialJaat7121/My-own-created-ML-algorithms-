@@ -13,7 +13,6 @@ A personal repository to implement core machine learning algorithms and utilitie
 
 
 ### Supervised Learning
-- Regression
  - Regression
   - Simple Linear Regression (OLS) — `regression/linear_regression/simple_linear_regression/LR_OLS.py` (class `SimpleLinearRegressionOLS`) — methods: `fit(x, y)`, `predict(X)`.
   - Simple Linear Regression (Gradient Descent) — `regression/linear_regression/simple_linear_regression/LR.py` (class `SimpleLinearRegression`) — `fit(X, y, learning_rate=0.001, n_iterations=1000, tol=1e-6, clip_grad=1e6, scale=True)` and `predict(X)`; stores `coef_` and `intercept_`.
