@@ -18,13 +18,13 @@ A personal repository to implement core machine learning algorithms and utilitie
   - Simple Linear Regression (Gradient Descent) — LR.py (from-scratch API compatible with scikit-learn)
   - Multiple Linear Regression (Gradient Descent) — Multiple_LR.py
   - Polynomial feature transformer — Polynomial_Regression.py (used with MultipleLinearRegression for polynomial regression)
-  - Support Vector Machine (SVM) — An algorithm that predicts a continuous numerical value, answering "how much" (e.g., predicting the exact price of a house) / (from-scratch regressor; see svm folder for usage/tests)
+  - Support Vector Machine (SVM) — An algorithm that predicts a continuous numerical value, answering "how much" (e.g., predicting the exact price of a house) / (from-scratch regressor; see `svm/comparision.ipynb` and `svm/demo.ipynb` for usage/tests)
   - K-Nearest Neighbors (KNN) Regressor — A non‑parametric method that predicts continuous values by averaging the targets of the k closest training samples / (from‑scratch regressor; see knn folder for usage/tests)
 
 
 
 - Classification
-  - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No") / (from-scratch classifier; see logistic_regression folder for usage/tests).
+  - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No") / (from-scratch classifier; see `classification/Logistic_Regression` for usage/tests).
   - Support Vector Machine (SVM) — An algorithm that categorizes data into distinct groups, answering "which one" (e.g., predicting if a fruit is an apple or an orange) / (from-scratch classifier; see svm folder for usage/tests)
   - Naive Bayes — Naive Bayes (Gaussian) is a probabilistic classifier based on Bayes' Theorem that assumes all features are unrelated to each other (independent) when predicting a category / see naive_bayes folder for usage/tests.
   - K-Nearest Neighbors (KNN) — instance‑based classifier that assigns a class by majority vote among the k nearest training points / (from‑scratch classifier; see knn folder for usage/tests)
@@ -174,7 +174,6 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- Gradient Boosting (AdaBoost, XGBoost)
 - k‑Means and other clustering
 - Broader unit tests, benchmarks, and documentation
 
