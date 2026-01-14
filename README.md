@@ -23,13 +23,11 @@ A personal repository to implement core machine learning algorithms and utilitie
   - K-Nearest Neighbors (KNN) Regressor — A non‑parametric method that predicts continuous values by averaging the targets of the k closest training samples / (from‑scratch regressor; see knn folder for usage/tests)
 
 
-
 - Classification
-  - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No") / (from-scratch classifier; see `classification/Logistic_Regression` for usage/tests).
-  - Support Vector Machine (SVM) — An algorithm that categorizes data into distinct groups, answering "which one" (e.g., predicting if a fruit is an apple or an orange) / (from-scratch classifier; see svm folder for usage/tests)
-  - Naive Bayes — Naive Bayes (Gaussian) is a probabilistic classifier based on Bayes' Theorem that assumes all features are unrelated to each other (independent) when predicting a category / see naive_bayes folder for usage/tests.
+  - Logistic Regression — statistical algorithm used to predict the probability that a specific instance belongs to a particular category (like "Yes" or "No"). Implementation: `classification/Logistic_Regression/Logistic_regression.py` (class `LogisticRegression`) — methods: `fit(X, y)`, `predict_proba(X)`, `predict(X, threshold=0.5)`. Test: `classification/Logistic_Regression/test_logistic.py`.
+  - Support Vector Machine (SVM) — An algorithm that categorizes data into distinct groups, answering "which one" (e.g., predicting if a fruit is an apple or an orange) / (from-scratch classifier; see `svm/comparision.ipynb` and `svm/demo.ipynb` for usage/tests).
+  - Naive Bayes — Gaussian Naive Bayes implementation. Implementation: `classification/Naive_Bayes/naive_bayes.py` (class `MyGaussianNB`) — methods: `fit(X, y)`, `predict(X)`, and `accuracy(y_true, y_pred)`. Demo: `classification/Naive_Bayes/test.ipynb`.
   - K-Nearest Neighbors (KNN) — instance‑based classifier that assigns a class by majority vote among the k nearest training points / (from‑scratch classifier; see knn folder for usage/tests)
-
 
 
 ### Utilities
@@ -96,6 +94,7 @@ The test scripts are provided to validate implementations and compare against sc
 
 4. test_logistic.py (module-level)
    - Location: `Own_ml_algorithms/classification/Logistic_Regression/test_logistic.py`
+   - Implementation: `Own_ml_algorithms/classification/Logistic_Regression/Logistic_regression.py` — class `LogisticRegression(learning_rate=0.01, n_iterations=1000, fit_intercept=True)` with `fit(X, y)`, `predict_proba(X)`, `predict(X, threshold=0.5)`; learned parameters available as `coef_` and `intercept_`.
    - Purpose: validates the from-scratch `LogisticRegression` implementation and compares results with scikit-learn's `LogisticRegression` when available.
    - Run (from repo root):
      ```powershell
