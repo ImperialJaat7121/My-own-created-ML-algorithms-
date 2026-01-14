@@ -114,6 +114,7 @@ The test scripts are provided to validate implementations and compare against sc
 
 7. KNN classifier test (module-level)
    - Location: `Own_ml_algorithms/knn/test_classifier.py`
+   - Implementation: `Own_ml_algorithms/knn/knn_classifier.py` — provides `MyKNNClassifier(k=3)` with `fit(X,y)`, `predict(X)`, and `score(X,y)` (returns accuracy).
    - Purpose: evaluates `MyKNNClassifier` on the Iris dataset and compares with scikit‑learn's `KNeighborsClassifier`.
    - Run:
      ```powershell
@@ -128,6 +129,7 @@ The test scripts are provided to validate implementations and compare against sc
 
 8. KNN regressor test (module-level)
    - Location: `Own_ml_algorithms/knn/test_regressor.py`
+   - Implementation: `Own_ml_algorithms/knn/knn_regressor.py` — provides `MyKNNRegressor(k=3)` with `fit(X,y)`, `predict(X)`, and `score(X,y)` (returns R²).
    - Purpose: evaluates `MyKNNRegressor` on the Diabetes dataset and compares with scikit‑learn's `KNeighborsRegressor`.
    - Run:
      ```powershell
