@@ -206,7 +206,8 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- k‑Means and other clustering
+- unsupervised learning algorithms (clustering, dimensionality reduction)
+- ensemble methods (bagging, boosting)
 - Broader unit tests, benchmarks, and documentation
 
 ## Contributing
