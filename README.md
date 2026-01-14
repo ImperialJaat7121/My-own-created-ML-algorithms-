@@ -1,16 +1,3 @@
-10. Boosting (AdaBoost, Gradient Boosting, XGBoost)
-   - AdaBoost Classifier
-     - Location: `Own_ml_algorithms/boosting/adaboost/adaboost_classifier.py` (class `AdaBoostClassifier(n_estimators=50, learning_rate=1.0)`) — methods: `fit(X, y)`, `predict(X)`. Uses `MyDecisionTreeClassifier` (stumps) as weak learners. Test: `boosting/adaboost/test_adaboost_classifier.py`, demos: `boosting/adaboost/visualization_classifier.ipynb`.
-   - AdaBoost Regressor
-     - Location: `Own_ml_algorithms/boosting/adaboost/adaboost_regressor.py` (class `AdaBoostRegressor(n_estimators=50, learning_rate=1.0)`) — methods: `fit(X, y)`, `predict(X)`. Uses `MyDecisionTreeRegressor` as weak regressors. Test: `boosting/adaboost/test_adaboost_regressor.py`, demos: `boosting/adaboost/visualization_regressor.ipynb`.
-   - Gradient Boosting Classifier
-     - Location: `Own_ml_algorithms/boosting/gradient boosting/gradient_boosting_classifier.py` (class `GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3)`) — methods: `fit(X, y)`, `predict_proba(X)`, `predict(X)`. Uses `MyDecisionTreeRegressor` to fit negative gradients (residuals). Test: `boosting/gradient boosting/test_gb_classifier.py`, demo: `boosting/gradient boosting/visual_gb_classifier.ipynb`.
-   - Gradient Boosting Regressor
-     - Location: `Own_ml_algorithms/boosting/gradient boosting/gradient_boosting_regressor.py` (class `GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3)`) — methods: `fit(X, y)`, `predict(X)`. Uses residual-fitting with `MyDecisionTreeRegressor`. Test: `boosting/gradient boosting/test_gb_regressor.py`, demo: `boosting/gradient boosting/visual_gb_regressor.ipynb`.
-   - XGBoost
-     - Location: `Own_ml_algorithms/boosting/xgboost/xgboost_classifier.py` and `xgboost_regressor.py`; tree core: `xgboost_tree.py` (class `XGBoostTree`).
-     - API: `XGBoostClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, reg_lambda=1.0, gamma=0.0)` — `fit(X, y)`, `predict_proba(X)`, `predict(X)`; `XGBoostRegressor(...)` — `fit(X, y)`, `predict(X)`. Tests: `boosting/xgboost/test_xgb_classifier.py`, `boosting/xgboost/test_xgb_regressor.py`; demos: `boosting/xgboost/visual_xgb_classifier.ipynb`, `visual_xgb_regressor.ipynb`.
-
 # Machine Learning Algorithms from Scratch
 
 
@@ -174,6 +161,19 @@ The test scripts are provided to validate implementations and compare against sc
      - Implementation: class `MyRandomForestRegressor(n_estimators=100, min_samples_split=2, max_depth=100, max_features=None, bootstrap=True, random_state=None)` — methods: `fit(X, y)`, `predict(X)`, `score(X_test, y_test)` (R²). Uses bagging + `MyDecisionTreeRegressor` as base learner.
    - Demo / Tests:
      - Random Forest demo: `trees/randomforest/demo_random_forest.ipynb` (classification and regression examples).
+
+10. Boosting (AdaBoost, Gradient Boosting, XGBoost)
+   - AdaBoost Classifier
+     - Location: `Own_ml_algorithms/boosting/adaboost/adaboost_classifier.py` (class `AdaBoostClassifier(n_estimators=50, learning_rate=1.0)`) — methods: `fit(X, y)`, `predict(X)`. Uses `MyDecisionTreeClassifier` (stumps) as weak learners. Test: `boosting/adaboost/test_adaboost_classifier.py`, demos: `boosting/adaboost/visualization_classifier.ipynb`.
+   - AdaBoost Regressor
+     - Location: `Own_ml_algorithms/boosting/adaboost/adaboost_regressor.py` (class `AdaBoostRegressor(n_estimators=50, learning_rate=1.0)`) — methods: `fit(X, y)`, `predict(X)`. Uses `MyDecisionTreeRegressor` as weak regressors. Test: `boosting/adaboost/test_adaboost_regressor.py`, demos: `boosting/adaboost/visualization_regressor.ipynb`.
+   - Gradient Boosting Classifier
+     - Location: `Own_ml_algorithms/boosting/gradient boosting/gradient_boosting_classifier.py` (class `GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3)`) — methods: `fit(X, y)`, `predict_proba(X)`, `predict(X)`. Uses `MyDecisionTreeRegressor` to fit negative gradients (residuals). Test: `boosting/gradient boosting/test_gb_classifier.py`, demo: `boosting/gradient boosting/visual_gb_classifier.ipynb`.
+   - Gradient Boosting Regressor
+     - Location: `Own_ml_algorithms/boosting/gradient boosting/gradient_boosting_regressor.py` (class `GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3)`) — methods: `fit(X, y)`, `predict(X)`. Uses residual-fitting with `MyDecisionTreeRegressor`. Test: `boosting/gradient boosting/test_gb_regressor.py`, demo: `boosting/gradient boosting/visual_gb_regressor.ipynb`.
+   - XGBoost
+     - Location: `Own_ml_algorithms/boosting/xgboost/xgboost_classifier.py` and `xgboost_regressor.py`; tree core: `xgboost_tree.py` (class `XGBoostTree`).
+     - API: `XGBoostClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, reg_lambda=1.0, gamma=0.0)` — `fit(X, y)`, `predict_proba(X)`, `predict(X)`; `XGBoostRegressor(...)` — `fit(X, y)`, `predict(X)`. Tests: `boosting/xgboost/test_xgb_classifier.py`, `boosting/xgboost/test_xgb_regressor.py`; demos: `boosting/xgboost/visual_xgb_classifier.ipynb`, `visual_xgb_regressor.ipynb`.
 
 Notes:
 - Ensure `scikit-learn` and `pandas` are installed to run the comparison test.
