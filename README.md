@@ -103,9 +103,13 @@ The test scripts are provided to validate implementations and compare against sc
      ```
 
 5. SVM comparison / demo (notebook)
-   - Location: `Own_ml_algorithms/svm/comparision.ipynb` and `Own_ml_algorithms/svm/demo.ipynb`
-   - Purpose: benchmark the project's linear SVM classifier/regressor (`svm_classifier.py`, `svm_regressor.py`) against scikit‑learn's `SVC`/`SVR` on standard datasets (Breast Cancer for classification, California Housing for regression); includes visual comparisons (confusion matrices, accuracy, prediction plots) and a demonstration of margins and epsilon-tube for SVR.
-   - Run: open the notebook in Jupyter and execute all the cells.
+  - Location: `Own_ml_algorithms/svm/comparision.ipynb` and `Own_ml_algorithms/svm/demo.ipynb`
+  - Implementation: `Own_ml_algorithms/svm/svm_classifier.py` (`MySVMClassifier`) and `Own_ml_algorithms/svm/svm_regressor.py` (`MySVMRegressor`).
+  - API summary:
+    - `MySVMClassifier(learning_rate=0.001, lambda_param=0.01, n_iterations=1000)` — methods: `fit(X, y)` (expects labels in {0,1} or converted internally to {-1,1}), `predict(X)` (returns -1 or 1 predictions).
+    - `MySVMRegressor(learning_rate=0.001, lambda_param=0.01, n_iterations=1000, epsilon=0.1)` — methods: `fit(X, y)`, `predict(X)` (returns continuous predictions); uses epsilon-insensitive loss for training.
+  - Purpose: benchmark the project's linear SVM classifier/regressor against scikit‑learn's `SVC`/`SVR` on standard datasets (Breast Cancer for classification, California Housing for regression); includes visual comparisons (confusion matrices, accuracy, prediction plots) and a demonstration of margins and epsilon-tube for SVR.
+  - Run: open the notebook in Jupyter and execute all the cells.
 
 6. Naive Bayes demo/notebook (module-level)
   - Location: `Own_ml_algorithms/classification/Naive_Bayes/test.ipynb`
