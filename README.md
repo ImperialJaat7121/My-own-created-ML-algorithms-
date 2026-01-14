@@ -14,10 +14,11 @@ A personal repository to implement core machine learning algorithms and utilitie
 
 ### Supervised Learning
 - Regression
-  - Simple Linear Regression (OLS) — LR_OLS.py
-  - Simple Linear Regression (Gradient Descent) — LR.py (from-scratch API compatible with scikit-learn)
-  - Multiple Linear Regression (Gradient Descent) — Multiple_LR.py
-  - Polynomial feature transformer — Polynomial_Regression.py (used with MultipleLinearRegression for polynomial regression)
+ - Regression
+  - Simple Linear Regression (OLS) — `regression/linear_regression/simple_linear_regression/LR_OLS.py` (class `SimpleLinearRegressionOLS`) — methods: `fit(x, y)`, `predict(X)`.
+  - Simple Linear Regression (Gradient Descent) — `regression/linear_regression/simple_linear_regression/LR.py` (class `SimpleLinearRegression`) — `fit(X, y, learning_rate=0.001, n_iterations=1000, tol=1e-6, clip_grad=1e6, scale=True)` and `predict(X)`; stores `coef_` and `intercept_`.
+  - Multiple Linear Regression (Gradient Descent) — `regression/linear_regression/multiple_linear_regression/Multiple_LR.py` (class `MultipleLinearRegression`) — `fit(X, y, learning_rate=0.01, n_iterations=1000, tol=1e-6, verbose=False)` and `predict(X)`; stores `coef_` and `intercept_`.
+  - Polynomial feature transformer — `regression/linear_regression/polynomial_regression/Polynomial_Regression.py` (class `PolynomialRegression`) — `fit_transform(X)` returns polynomial feature matrix (use with `MultipleLinearRegression` for polynomial regression).
   - Support Vector Machine (SVM) — An algorithm that predicts a continuous numerical value, answering "how much" (e.g., predicting the exact price of a house) / (from-scratch regressor; see `svm/comparision.ipynb` and `svm/demo.ipynb` for usage/tests)
   - K-Nearest Neighbors (KNN) Regressor — A non‑parametric method that predicts continuous values by averaging the targets of the k closest training samples / (from‑scratch regressor; see knn folder for usage/tests)
 
