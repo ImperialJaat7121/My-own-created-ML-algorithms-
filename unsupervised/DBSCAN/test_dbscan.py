@@ -1,17 +1,19 @@
 import numpy as np
-from sklearn.datasets import make_moons
+from sklearn.datasets import make_circles
 from sklearn.cluster import DBSCAN as SklearnDBSCAN
 from sklearn.metrics import adjusted_rand_score
 from dbscan import DBSCAN
 
 def test():
-    print("\n--- 🧪 Testing DBSCAN ---")
+    print("\n--- 🧪 Testing DBSCAN (Complex Circles) ---")
     
-    # Generate Moons (Standard test for DBSCAN)
-    X, y_true = make_moons(n_samples=200, noise=0.1, random_state=42)
+    # Generate Concentric Circles (The "Bullseye" Problem)
+    # This is harder than moons because one cluster is inside the other.
+    X, y_true = make_circles(n_samples=500, factor=0.5, noise=0.05, random_state=42)
 
     # Parameters
-    eps = 0.25
+    # circles with factor 0.5 are quite close, so eps needs to be tight
+    eps = 0.15
     min_samples = 5
 
     # 1. Own Implementation
