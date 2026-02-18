@@ -3,7 +3,6 @@
 
 "Why just import when you can build?"
 
-
 ## About
 A personal repository to implement core machine learning algorithms and utilities using only Python and NumPy. The goal is to learn the inner workings of algorithms (not to replace libraries like scikit-learn).
 
