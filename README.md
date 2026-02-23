@@ -29,9 +29,30 @@ A personal repository to implement core machine learning algorithms and utilitie
 
 ### Utilities
 - Preprocessing
-  - train_test_split (custom implementation)
+  - train_test_split (custom implementation) — `preprocessing.py`
 - Performance / Metrics
   - calculate_mae, calculate_mse, calculate_rmse, calculate_r_squared
+
+### Unsupervised Learning
+- Clustering / Metrics
+  - Silhouette Score (from-scratch) — `unsupervised/Silhouette/silhouette.py` (function `silhouette_score(X, labels)`) — calculates the mean Silhouette Coefficient for a clustering assignment without scikit‑learn internals.
+  - Test / Comparison — `unsupervised/Silhouette/test_silhouette.py` — synthetic `make_blobs` data; compares the project's `silhouette_score` with scikit‑learn's `silhouette_score`.
+  - Visualization Notebook — `unsupervised/Silhouette/visual_silhouette.ipynb` — demonstrates automatic K discovery using silhouette analysis and plots the silhouette score vs K values.
+- Dimensionality Reduction
+  - PCA (from-scratch) — `unsupervised/pca.py` (class `PCA`) — `fit(X)`, `transform(X)`, `fit_transform(X)`, and `explained_variance_ratio()`.
+  - Test / Comparison — `unsupervised/test_pca.py` — compares the project's `PCA` with scikit‑learn `PCA` on Iris.
+  - Visualization Notebook — `unsupervised/visual_pca.ipynb` — PCA visualization on sample data.
+
+Run the Silhouette test (from the `unsupervised/Silhouette` folder) after activating your virtualenv:
+```bash
+python -m pip install -r requirements.txt  # if needed
+python test_silhouette.py
+```
+
+Open the notebook with Jupyter or VS Code to run the visualization cells:
+```bash
+jupyter notebook unsupervised/Silhouette/visual_silhouette.ipynb
+```
 
 ## Installation
 Clone the repository and use your preferred environment (recommended: conda/venv).
@@ -143,7 +164,16 @@ The test scripts are provided to validate implementations and compare against sc
      python test_regressor.py
      ```
 
-9. Trees (Decision Trees & Random Forests)
+  9. PCA test (module-level)
+     - Location: `unsupervised/test_pca.py`
+     - Purpose: validates the from-scratch PCA implementation against scikit‑learn.
+     - Run:
+       ```powershell
+       cd Own_ml_algorithms\unsupervised
+       python test_pca.py
+       ```
+
+10. Trees (Decision Trees & Random Forests)
    - Decision Tree Classifier
      - Location: `Own_ml_algorithms/trees/decisiontree/decision_tree_classifier.py`
      - Implementation: class `MyDecisionTreeClassifier(min_samples_split=2, max_depth=100, n_features=None)` — methods: `fit(X, y)`, `predict(X)`. Uses information gain (entropy) for splits and returns class labels.
@@ -159,7 +189,7 @@ The test scripts are provided to validate implementations and compare against sc
    - Demo / Tests:
      - Random Forest demo: `trees/randomforest/demo_random_forest.ipynb` (classification and regression examples).
 
-10. Boosting (AdaBoost, Gradient Boosting, XGBoost)
+11. Boosting (AdaBoost, Gradient Boosting, XGBoost)
    - AdaBoost Classifier
      - Location: `Own_ml_algorithms/boosting/adaboost/adaboost_classifier.py` (class `AdaBoostClassifier(n_estimators=50, learning_rate=1.0)`) — methods: `fit(X, y)`, `predict(X)`. Uses `MyDecisionTreeClassifier` (stumps) as weak learners. Test: `boosting/adaboost/test_adaboost_classifier.py`, demos: `boosting/adaboost/visualization_classifier.ipynb`.
    - AdaBoost Regressor
@@ -186,6 +216,10 @@ Notes:
   - Visualizes decision boundaries on Iris using `MyKNNClassifier` with different k values and neighbor connections.
 - KNN regressor demo: [knn/demo_knn_regressor.ipynb](knn/demo_knn_regressor.ipynb)
   - Fits `MyKNNRegressor` to a noisy sine wave and compares different k values for under/overfitting behavior.
+- PCA visualization: [unsupervised/visual_pca.ipynb](unsupervised/visual_pca.ipynb)
+  - 2D projection of Iris features with explained variance summary.
+- Silhouette analysis: [unsupervised/Silhouette/visual_silhouette.ipynb](unsupervised/Silhouette/visual_silhouette.ipynb)
+  - Plots silhouette score across K values and highlights the optimal cluster count.
 
 ## Module notes / API highlights
 - MultipleLinearRegression.fit accepts common gradient descent parameters:
@@ -204,7 +238,7 @@ Notes:
 - This repo is educational — production use should prefer well-tested libraries.
 
 ## Project Roadmap
-- unsupervised learning algorithms (clustering, dimensionality reduction)
+- unsupervised clustering algorithms (k-means, DBSCAN, hierarchical)
 - ensemble methods (bagging, boosting)
 - Broader unit tests, benchmarks, and documentation
 
