@@ -237,10 +237,5 @@ Notes:
 - For multivariate extensions, ensure input X has shape (n_samples, n_features).
 - This repo is educational — production use should prefer well-tested libraries.
 
-## Project Roadmap
-- unsupervised clustering algorithms (k-means, DBSCAN, hierarchical)
-- ensemble methods (bagging, boosting)
-- Broader unit tests, benchmarks, and documentation
-
 ## Contributing
 This is a personal learning project, but if you see a bug or have a suggestion for improvement, feel free to open an issue or submit a pull request!
